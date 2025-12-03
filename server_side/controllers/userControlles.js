@@ -12,14 +12,15 @@ const home=async(req,res)=>{
 const register=async(req,res)=>{
     try {
 const {username,email,phone,password}=req.body;
-const userCreated=await User.create({username,email,phone,password})
-        res.status(200).json({"msg":"Register Page"})
-        console.log("data",userCreated);
-        
-       
+ const userExist=await User.findOne({email});
+ if(userExist){
+    return res.status(400).json({"msg":"User Already Exist"});
+ }
+    await User.create({username,email,phone,password})
+        res.status(200).json({"msg":"Register successfully completed"})   
         
     } catch (error) {
-        console.log(error);
+       res.status(200).json({"msg":`internal server error : ${error}`});
         
     }
 }
@@ -28,7 +29,7 @@ const login=async(req,res)=>{
     try {
         res.status(200).json({"msg":"Login Page"})
     } catch (error) {
-        console.log(error);
+  res.status(200).json({"msg":`internal server error : ${error}`});
         
     }
 }
