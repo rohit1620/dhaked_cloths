@@ -22,4 +22,5 @@ const menSchema= new mongoose.Schema({
 
 const Mendata=mongoose.model("Mendata",menSchema);
 
+console.log(Mendata)
 module.exports=Mendata;

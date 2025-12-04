@@ -9,7 +9,7 @@ const url=process.env.URL;
         console.log("connection successfully")
     } catch (error) {
         console.log(error);
-        console.log("connection failed")
+        
         
     }
 }
