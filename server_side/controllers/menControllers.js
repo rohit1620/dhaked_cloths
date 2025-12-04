@@ -2,8 +2,8 @@ const Mendata=require("../models/menSchema")
 
 const getData=async(req,res)=>{
     try {
-       
-        res.status(200).json({"msg":"get data for men"})
+        const data= await Mendata.find();
+        res.status(200).json({data})
     } catch (error) {
         res.status(400).json({"msg":error})
     }
