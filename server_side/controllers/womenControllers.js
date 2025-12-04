@@ -2,6 +2,8 @@ const Womendata=require("../models/womenSchema")
 
 const getData=async(req,res)=>{
     try {
+         const data= await Womendata.find();
+                res.status(200).json(data)
         res.status(200).json({"msg":"get data for women"})
     } catch (error) {
         res.status(400).json({"msg":error})
