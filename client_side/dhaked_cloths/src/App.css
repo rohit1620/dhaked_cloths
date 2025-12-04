@@ -1,0 +1,16 @@
+.ul1{
+    display: flex;
+    border: 1px solid black;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: black;
+}
+.ul1 li{
+    list-style: none;
+    color: white;
+
+}
+.ul1 .link{
+    text-decoration: none;
+}

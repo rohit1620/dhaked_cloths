@@ -1,3 +1,4 @@
+const bcrypt=require("bcrypt")
 const User = require("../models/userSchema")
 
 const home=async(req,res)=>{
@@ -27,7 +28,24 @@ const {username,email,phone,password}=req.body;
 
 const login=async(req,res)=>{
     try {
-        res.status(200).json({"msg":"Login Page"})
+        const {email,password}=req.body;
+        const userExist=await User.findOne({email});
+        if(!userExist){
+            return res.status(400).json({"msg":"Invailid credential"});
+        }
+        
+        const isPassword= await bcrypt.compare(password,userExist.password);
+        if(isPassword){
+            res.status(200).json({
+                "msg":"Login Successfully",
+                "token":await userExist.generateToken(),
+                "userId": userExist._id.toString()
+            })
+        }else{
+ res.status(400).json({"msg":"Wrong password or email"})
+        }
+       
+
     } catch (error) {
   res.status(200).json({"msg":`internal server error : ${error}`});
         
