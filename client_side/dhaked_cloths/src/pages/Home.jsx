@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { fetchData } from "../redux_toolkit/menSlice";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
+
   return (
     <div>
-      <div class="bg-[url('/cloths4.jpeg')]  bg-cover bg-center h-screen text-center sm:h-screen w-full sm:hidden">
+      <div className="bg-[url('/cloths4.jpeg')]  bg-cover bg-center h-screen text-center sm:h-screen w-full sm:hidden">
         <h1 className="font-bold text-5xl pt-9 text-yellow-500 italic">
           𝓓𝓗𝓐𝓚𝓔𝓓 𝓒𝓛𝓞𝓣𝓗𝓢
         </h1>
@@ -12,7 +19,7 @@ const Home = () => {
           quibusdam! Inventore consectetur accusamus facilis ad minima quas
         </p>
       </div>
-      <div class="bg-[url('/cloths2.jpeg')]  bg-cover bg-center h-64 sm:h-screen w-full hidden sm:block ">
+      <div className="bg-[url('/cloths2.jpeg')]  bg-cover bg-center h-64 sm:h-screen w-full hidden sm:block ">
         <h1 className="font-bold text-7xl italic text-center pt-35 text-blue-600">
           𝓓𝓗𝓐𝓚𝓔𝓓 𝓒𝓛𝓞𝓣𝓗𝓢
         </h1>
@@ -59,7 +66,7 @@ const Home = () => {
             𝓖𝓲𝓻𝓵–𝓚𝓲𝓭𝓼 𝓒𝓵𝓸𝓽𝓱𝓼
           </h1>
           <img
-            className="h-96 w-full rounded-2xl"
+            className="h-96 w-full rounded-2xl "
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJawyKbzL1MwpLN_iZ8hEvPkHrMsyCfyoZnw&s"
             alt=""
           />
