@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchData=createAsyncThunk("men",async()=>{
-    let data=await fetch("https://dhaked-cloths-1.onrender.com/api/men");
+export const fetchData=createAsyncThunk("men",async(value)=>{
+    let data=await fetch(`https://dhaked-cloths-1.onrender.com/api/${value}`);
     data=await data.json();
     console.log("datas bhai",data);
     
@@ -23,7 +23,7 @@ const menSlice=createSlice({
             state.status="loading"
           }).addCase(fetchData.fulfilled,(state,action)=>{
             state.status="success";
-            state.item=action.payload
+            state.item=action.payload.data
           }).addCase(fetchData.rejected,(state,action)=>{
             state.status="rejected";
             state.error=action.error.message
