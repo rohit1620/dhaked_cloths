@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 // import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 // import { faList } from "@fortawesome/free-solid-svg-icons";
 
 // const Navbar = () => {
@@ -77,19 +77,20 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="w-full bg-black text-white flex justify-between items-center px-5 h-16 sm:justify-around">
+    <div className="fixed top-0 w-full bg-primary text-white flex justify-between items-center px-5 h-13 sm:justify-around">
       {/* Logo */}
-      <div className="text-xl italic font-bold text-yellow-400">
-        Dhaked-Cloths
+      <div className={`text-xl italic font-bold text-blue-600`}>
+        <span className="text-yellow-500">𝓓</span>𝓗𝓐𝓚𝓔𝓓-𝓒𝓛𝓞𝓣𝓗𝓢
       </div>
 
       {/* Hamburger */}
-      <button className="sm:hidden text-2xl" onClick={() => setOpen(!open)}>
+      <button className="md:hidden text-2xl" onClick={() => setOpen(!open)}>
         {open ? "✖" : "☰"}
       </button>
 
@@ -98,11 +99,11 @@ const Navbar = () => {
         className={`
           /* Desktop View */
           sm:flex sm:gap-8 sm:items-center sm:static sm:w-auto sm:h-auto
-          sm:bg-transparent sm:flex-row sm:translate-x-0
+          sm:bg-transparent sm:flex-row sm:translate-x-0 sm:pt-0 
 
           /* Mobile View */
-          fixed top-16 left-0 h-screen w-64 bg-black text-white 
-          flex flex-col gap-6 pt-10 px-6 
+          fixed top-13 left-0 h-screen w-full bg-primary text-white 
+          flex flex-col gap-6 pt-10 px-6 items-center 
           transform transition-transform duration-300
 
           ${open ? "translate-x-0" : "-translate-x-full"}
@@ -124,6 +125,9 @@ const Navbar = () => {
           <Link to="/kids">Kids</Link>
         </li>
       </ul>
+      <div className="hidden sm:block">
+        <FontAwesomeIcon icon={faBasketShopping} />
+      </div>
     </div>
   );
 };

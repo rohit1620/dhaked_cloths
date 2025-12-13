@@ -6,11 +6,11 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
+    <div className="pt-13">
       <Navbar />
       <AllRoutes />
       <Footer />
-    </>
+    </div>
   );
 }
 
